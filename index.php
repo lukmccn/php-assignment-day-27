@@ -2,8 +2,9 @@
     declare(strict_types=1);
     $nama = "Mustaqim";
     $usia = 18;
-    $saldo = 12_000_000.00;
     $hobi = ["mancing", "berenang", "makan", "masak"];
+    $saldo = 12_000_000.00;
+    $statusAktif = true;
     var_dump($saldo).PHP_EOL;
 
     // menghitung karater terpanjang dari string yang pernah di masukkan
@@ -19,19 +20,15 @@
         return $longest;
     }
     function str_right(string $str): string {
-        return str_pad($str, maxStrLen($str)+2, ' ', STR_PAD_RIGHT);
+        return str_pad($str, maxStrLen($str)+1, ' ', STR_PAD_RIGHT);
     }
     function tampilkanProfil
-    (string $nama, int $usia, float $saldo, bool $statusAktif, array $hobi) {
-        $result =  str_right("Nama").": $nama".PHP_EOL.
-            str_right("Usia").": $usia".PHP_EOL.
-            str_right("Status aktif").": $statusAktif".PHP_EOL.
-            str_right("Hobi").": ";
-       
-        foreach($hobi as $h) {
-            $result .= " $h,";
-        }
-        return substr($result, 0, -1);
+    (string $nama, int $usia,  bool $statusAktif, array $hobi) {
+        echo str_right("Status").": ", ($statusAktif ? "aktif" : "tidak aktif").PHP_EOL;
+        echo str_right("Nama").": $nama".PHP_EOL;
+        echo str_right("Usia").": $usia".PHP_EOL;
+        echo str_right("Hobi").": ".implode(", ", $hobi).PHP_EOL;
     }
+    tampilkanProfil($nama, $usia, $statusAktif, $hobi);
 ?>
 
